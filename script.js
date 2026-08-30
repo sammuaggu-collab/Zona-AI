@@ -1,3 +1,5 @@
+alert("Zono script loaded!");
+
 document.addEventListener("DOMContentLoaded", function () {
 
     /* =========================
