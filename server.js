@@ -399,7 +399,7 @@ app.post(
                     documentContext +=
                         `\n--- ${document.name} ---\n`;
 
-                    documentContext +=
+                 documentContext +=
                         document.text.slice(0, 100000);
 
                     documentContext +=
@@ -426,85 +426,84 @@ app.post(
 
             if (imageParts.length > 0) {
 
-                const lastUser =
-                    recentMessages
-                        .filter(m => m.role === "user")
-                        .pop();
+    const lastUser =
+        recentMessages
+            .filter(function (m) {
+                return m.role === "user";
+            })
+            .pop();
 
-                const userText =
-                    lastUser?.content ||
-                    "Analyze the uploaded image.";
+    const userText =
+        lastUser?.content ||
+        "Please carefully analyze the uploaded image and describe what you see.";
 
-                const visionContent = [
-                    {
-                        type: "text",
-                        text: userText
-                    }
-                ];
+    const visionContent = [
+        {
+            type: "text",
+            text:
+                "Analyze the uploaded image itself. " +
+                "Do not answer from assumptions or from the server instructions. " +
+                "Describe what is actually visible in the image.\n\n" +
+                "User request: " +
+                userText
+        }
+    ];
 
+    for (const image of imageParts) {
 
-                for (const image of imageParts) {
-
-                    visionContent.push({
-                        type: "image_url",
-                        image_url: {
-                            url: image.data
-                        }
-                    });
-                }
-
-
-                const visionMessages = [
-                    systemMessage,
-
-                    ...recentMessages
-                        .slice(0, -1),
-
-                    {
-                        role: "user",
-                        content: visionContent
-                    }
-                ];
-
-
-                const reply =
-                    await groqChat(
-                        visionMessages,
-                        VISION_MODEL
-                    );
-
-
-                const imageMatch =
-                    reply.match(
-                        /\[SHOW_IMAGE:\s*(.*?)\]/i
-                    );
-
-
-                let illustration = null;
-
-
-                if (imageMatch) {
-
-                    illustration =
-                        await findIllustration(
-                            imageMatch[1]
-                        );
-                }
-
-
-                return res.json({
-                    reply:
-                        reply
-                            .replace(
-                                /\[SHOW_IMAGE:\s*(.*?)\]/gi,
-                                ""
-                            )
-                            .trim(),
-
-                    image: illustration
-                });
+        visionContent.push({
+            type: "image_url",
+            image_url: {
+                url: image.data
             }
+        });
+    }
 
+    const visionMessages = [
+        systemMessage,
+        {
+            role: "user",
+            content: visionContent
+        }
+    ];
+
+    console.log(
+        `Sending ${imageParts.length} image(s) to ${VISION_MODEL}`
+    );
+
+    const reply =
+        await groqChat(
+            visionMessages,
+            VISION_MODEL
+        );
+
+    const imageMatch =
+        reply.match(
+            /\[SHOW_IMAGE:\s*(.*?)\]/i
+        );
+
+    let illustration = null;
+
+    if (imageMatch) {
+
+        illustration =
+            await findIllustration(
+                imageMatch[1]
+            );
+    }
+
+    return res.json({
+        reply:
+            reply
+                .replace(
+                    /\[SHOW_IMAGE:\s*(.*?)\]/gi,
+                    ""
+                )
+                .trim(),
+
+        image: illustration
+    });
+                }
 
             // ----------------------------------
             // NORMAL TEXT CHAT
@@ -520,30 +519,7 @@ app.post(
                 await groqChat(
                     chatMessages,
                     TEXT_MODEL
-                );
-
-
-            // ----------------------------------
-            // OPTIONAL IMAGE
-            // ----------------------------------
-
-            const imageMatch =
-                reply.match(
-                    /\[SHOW_IMAGE:\s*(.*?)\]/i
-                );
-
-
-            let illustration = null;
-
-
-            if (imageMatch) {
-
-                illustration =
-                    await findIllustration(
-                        imageMatch[1]
-                    );
-            }
-
+                )
 
             const cleanReply =
                 reply
