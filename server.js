@@ -777,23 +777,7 @@ function wantsDetailedAnswer(text) {
     }
 
 
-    return /\b(
-        detailed|
-        detail|
-        fully|
-        full\s+explanation|
-        explain\s+fully|
-        explain\s+in\s+detail|
-        long\s+answer|
-        deep\s+explanation|
-        step[-\s]?by[-\s]?step|
-        teach\s+me|
-        more\s+details|
-        complete\s+explanation|
-        at\s+least\s+300\s+words|
-        300\s+words|
-        500\s+words
-    )\b/i.test(text);
+    return /\b(detailed|detail|fully|full\s+explanation|explain\s+fully|explain\s+in\s+detail|long\s+answer|deep\s+explanation|step[-\s]?by[-\s]?step|teach\s+me|more\s+details|complete\s+explanation|at\s+least\s+300\s+words|300\s+words|500\s+words)\b/i.test(text);
 }
 
 
