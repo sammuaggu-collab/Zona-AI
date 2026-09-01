@@ -3,7 +3,9 @@
 
 <head>
 
-<meta name="google-site-verification" content="nmaujRqwP6x0mdyUWGh9pTk8FmMYk19YeOtEhkhxMyQ" />
+    <meta name="google-site-verification"
+        content="nmaujRqwP6x0mdyUWGh9pTk8FmMYk19YeOtEhkhxMyQ">
+
     <meta charset="UTF-8">
 
     <meta
@@ -22,33 +24,23 @@
     >
 
     <title>Zono AI</title>
-    <meta charset="UTF-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    <link
+        rel="stylesheet"
+        href="./style.css"
     >
 
-    <meta
-        name="theme-color"
-        content="#050505"
-    >
-
-    <meta
-        name="description"
-        content="Zono AI - Your AI assistant"
-    >
-
-    <title>Zono AI</title>
-
-    <link rel="stylesheet" href="./style.css">
 </head>
+
 
 <body>
 
     <div class="app">
 
-        <!-- SIDEBAR -->
+
+        <!-- ==========================================
+             SIDEBAR
+        =========================================== -->
 
         <aside
             class="sidebar"
@@ -63,9 +55,12 @@
                         Z
                     </div>
 
-                    <span>Zono AI</span>
+                    <span>
+                        Zono AI
+                    </span>
 
                 </div>
+
 
                 <button
                     class="close-button"
@@ -79,18 +74,47 @@
             </div>
 
 
+            <!-- NEW CHAT -->
+
             <button
                 class="new-chat-button"
                 id="newChatButton"
                 type="button"
             >
 
-                <span class="plus">＋</span>
+                <span class="plus">
+                    ＋
+                </span>
 
-                <span>New Chat</span>
+                <span>
+                    New Chat
+                </span>
 
             </button>
 
+
+            <!-- CLEAR CHAT -->
+
+            <button
+                class="clear-chat-button"
+                id="clearChatButton"
+                type="button"
+                aria-label="Clear current chat"
+                title="Clear current chat"
+            >
+
+                <span>
+                    🗑️
+                </span>
+
+                <span>
+                    Clear Chat
+                </span>
+
+            </button>
+
+
+            <!-- RECENT CHATS -->
 
             <div class="history-title">
                 RECENT CHATS
@@ -105,7 +129,9 @@
         </aside>
 
 
-        <!-- SIDEBAR BACKDROP -->
+        <!-- ==========================================
+             SIDEBAR BACKDROP
+        =========================================== -->
 
         <div
             class="sidebar-backdrop"
@@ -113,23 +139,34 @@
         ></div>
 
 
-        <!-- MAIN -->
+        <!-- ==========================================
+             MAIN
+        =========================================== -->
 
         <main class="main">
 
-            <!-- HEADER -->
+
+            <!-- ======================================
+                 HEADER
+            ======================================= -->
 
             <header class="header">
+
+
+                <!-- MENU -->
 
                 <button
                     class="header-button"
                     id="menuButton"
                     type="button"
                     aria-label="Open menu"
+                    title="Open menu"
                 >
                     ☰
                 </button>
 
+
+                <!-- BRAND -->
 
                 <div class="header-brand">
 
@@ -144,6 +181,7 @@
                             Zono AI
                         </div>
 
+
                         <div class="online-status">
 
                             <span></span>
@@ -156,15 +194,33 @@
 
                 </div>
 
+
+                <!-- IMAGE GENERATOR -->
+
+                <button
+                    class="header-button image-button"
+                    id="imageButton"
+                    type="button"
+                    aria-label="Generate image"
+                    title="Generate image"
+                >
+                    🎨
+                </button>
+
             </header>
 
 
-            <!-- CHAT AREA -->
+            <!-- ==========================================
+                 CHAT AREA
+            =========================================== -->
 
             <section
                 class="chat-area"
                 id="chatArea"
             >
+
+
+                <!-- WELCOME -->
 
                 <div
                     class="welcome"
@@ -175,9 +231,11 @@
                         Z
                     </div>
 
+
                     <h1>
                         Welcome to Zono AI
                     </h1>
+
 
                     <p>
                         Your AI. Your world.
@@ -188,9 +246,12 @@
             </section>
 
 
-            <!-- COMPOSER -->
+            <!-- ==========================================
+                 COMPOSER
+            =========================================== -->
 
             <footer class="composer">
+
 
                 <!-- ATTACHMENT PREVIEW -->
 
@@ -202,7 +263,10 @@
 
                 <div class="composer-box">
 
-                    <!-- ATTACH FILE -->
+
+                    <!-- ==================================
+                         ATTACH FILE
+                    =================================== -->
 
                     <button
                         class="attach-button"
@@ -215,7 +279,9 @@
                     </button>
 
 
-                    <!-- HIDDEN FILE INPUT -->
+                    <!-- ==================================
+                         HIDDEN FILE INPUT
+                    =================================== -->
 
                     <input
                         id="fileInput"
@@ -226,7 +292,9 @@
                     >
 
 
-                    <!-- MESSAGE -->
+                    <!-- ==================================
+                         MESSAGE INPUT
+                    =================================== -->
 
                     <input
                         id="messageInput"
@@ -239,7 +307,9 @@
                     >
 
 
-                    <!-- VOICE -->
+                    <!-- ==================================
+                         VOICE
+                    =================================== -->
 
                     <button
                         class="voice-button"
@@ -252,7 +322,9 @@
                     </button>
 
 
-                    <!-- SEND -->
+                    <!-- ==================================
+                         SEND
+                    =================================== -->
 
                     <button
                         class="send-button"
@@ -267,8 +339,13 @@
                 </div>
 
 
+                <!-- ==================================
+                     DISCLAIMER
+                =================================== -->
+
                 <div class="composer-note">
-                    Zono AI can make mistakes. Check important information.
+                    Zono AI can make mistakes.
+                    Check important information.
                 </div>
 
             </footer>
@@ -278,10 +355,13 @@
     </div>
 
 
-    <!-- ZONO JAVASCRIPT -->
+    <!-- ==========================================
+         ZONO JAVASCRIPT
+    =========================================== -->
 
     <script src="./script.js"></script>
 
+
 </body>
 
-</html>
+                </html>
