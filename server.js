@@ -500,7 +500,7 @@ app.post(
     content:
         ZONO_PERSONALITY +
         "\n\nLOCAL KNOWLEDGE DATABASE:\n" +
-        LOCAL_KNOWLEDGE +
+        JSON.stringify(LOCAL_KNOWLEDGE, null, 2) +
         documentContext
 };
 
