@@ -524,8 +524,3 @@ module.exports = {
   MAYILADUTHURAI_KNOWLEDGE,
   getMayiladuthuraiKnowledgeText
 };
-Then make one small server change
-At the top of server.js, with your other requires, add:
-const {
-  getMayiladuthuraiKnowledgeText
-} = require("./local-knowledge");
